@@ -1,65 +1,150 @@
-import Image from "next/image";
+import Link from 'next/link';
+import Header from '@/components/Header';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      <main className="container mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Sistema Electoral Perú 2026
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Aplicativo que brinda a los ciudadanos información utilitaria referida a los procesos 
+            electorales del 2026. Mantente informado sobre opciones políticas y procesos electorales.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Módulo de Calendario Electoral */}
+          <ModuleCard
+            title="Calendario Electoral"
+            description="Fechas de elecciones, eventos relevantes y cronograma para miembros de mesa"
+            href="/calendario"
+            icon="📅"
+          />
+
+          {/* Módulo de Agrupaciones Políticas */}
+          <ModuleCard
+            title="Agrupaciones Políticas"
+            description="Información sobre partidos, candidatos, planes de gobierno y propuestas"
+            href="/agrupaciones"
+            icon="🏛️"
+          />
+
+          {/* Módulo de Información para Electores */}
+          <ModuleCard
+            title="Información para Electores"
+            description="Ubica tu lugar de votación, instrucciones de sufragio y marco legal"
+            href="/electores/buscar"
+            icon="🗳️"
+          />
+
+          {/* Módulo para Miembros de Mesa */}
+          <ModuleCard
+            title="Miembros de Mesa"
+            description="Calendario de actividades, instrucciones y deberes de los miembros"
+            href="/mesa/panel"
+            icon="👥"
+          />
+
+          {/* Módulo de Locales de Votación */}
+          <ModuleCard
+            title="Locales de Votación"
+            description="Consulta locales, direcciones y centros de votación"
+            href="/locales"
+            icon="📍"
+          />
+
+          {/* Módulo de Autenticación */}
+          <ModuleCard
+            title="Iniciar Sesión"
+            description="Acceso para administradores, operadores y miembros de mesa"
+            href="/login"
+            icon="🔐"
+          />
+
+          {/* Módulo de Resultados */}
+          <ModuleCard
+            title="Resultados"
+            description="Consulta resultados en tiempo real por mesa y distrito"
+            href="/resultados"
+            icon="📊"
+          />
+
+          {/* Módulo de Incidencias */}
+          <ModuleCard
+            title="Reportar Incidencias"
+            description="Registro de problemas y situaciones durante el proceso electoral"
+            href="/incidencias"
+            icon="⚠️"
+          />
+
+          {/* Módulo de Administración */}
+          <ModuleCard
+            title="Administración"
+            description="Gestión de candidatos, partidos, locales y mesas (Acceso ADMIN)"
+            href="/admin"
+            icon="⚙️"
+          />
+        </div>
+
+        <div className="mt-12 text-center">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-3xl mx-auto">
+            <h2 className="text-2xl font-semibold text-blue-900 mb-2">
+              Elecciones Generales 2026
+            </h2>
+            <p className="text-blue-700">
+              Prepárate para ejercer tu derecho al voto de manera informada y responsable
+            </p>
+          </div>
         </div>
       </main>
+
+      <footer className="bg-gray-800 text-white mt-16 py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p>&copy; 2026 ElectoPeru. Sistema de Información Electoral</p>
+          <p className="text-gray-400 mt-2">Desarrollado para facilitar el proceso democrático</p>
+        </div>
+      </footer>
     </div>
+  );
+}
+
+interface ModuleCardProps {
+  title: string;
+  description: string;
+  href: string;
+  icon: string;
+}
+
+function ModuleCard({ title, description, href, icon }: ModuleCardProps) {
+  return (
+    <Link
+      href={href}
+      className="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-200 hover:border-blue-500"
+    >
+      <div className="text-4xl mb-3">{icon}</div>
+      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+      <div className="mt-4 text-blue-700 font-medium flex items-center">
+        Acceder
+        <svg
+          className="w-4 h-4 ml-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </div>
+    </Link>
   );
 }
